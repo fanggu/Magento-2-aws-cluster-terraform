@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = ">= 3.0"
     }
     null = {
       source  = "hashicorp/null"
@@ -29,15 +29,18 @@ terraform {
 
 
 provider "aws" {
-  alias  = "useast1"
-  region = "us-east-1"
+  alias   = "useast1"
+  region  = "us-east-1"
+  profile = "us-njkm2dev"
+
   default_tags {
-   tags = {
-   Managed      = "terraform"
-   Config       = "magenx"
-   Environment  = "development"
+    tags = {
+      Managed     = "terraform"
+      Config      = "magenx"
+      Environment = "development"
+    }
   }
- }
+}
 provider "null" {}
 provider "random" {}
 provider "template" {}
