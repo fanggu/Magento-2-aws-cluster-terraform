@@ -32,6 +32,15 @@ resource "aws_launch_template" "this" {
   }
   user_data = filebase64("${abspath(path.root)}/user_data/${each.key}")
   update_default_version = true
+
+  # key pair name for ec2 instance
+  key_name = var.ec2_instance.key_pair_name
+
+  # set instance market options
+  instance_market_options {
+    market_type = var.ec2_instance.market_option_type
+  }
+
   lifecycle {
     create_before_destroy = true
   }
