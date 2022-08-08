@@ -29,8 +29,8 @@ terraform {
 
 
 provider "aws" {
-  alias   = "useast1"
-  region  = "us-east-1"
+  alias   = "uswest2"
+  region  = "us-west-2"
   profile = "us-njkm2dev"
 
   default_tags {
@@ -41,6 +41,13 @@ provider "aws" {
     }
   }
 }
+
+# To work with CloudFront, you must also specify the region us-east-1 (N. Virginia) on the AWS provider.
+provider "aws" {
+  alias  = "useast1"
+  region = "us-east-1"
+}
+
 provider "null" {}
 provider "random" {}
 provider "template" {}
