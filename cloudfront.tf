@@ -7,14 +7,14 @@
 # Create CloudFront distribution with S3 origin
 # # ---------------------------------------------------------------------------------------------------------------------#
 resource "aws_cloudfront_origin_access_identity" "this" {
-  comment = "CloudFront origin access identity"
+  # comment = "CloudFront origin access identity"
 }
 
 resource "aws_cloudfront_distribution" "this" {
   enabled             = true
   is_ipv6_enabled     = true
   web_acl_id          = aws_wafv2_web_acl.this.arn
-  price_class         = "PriceClass_100"
+  price_class         = "PriceClass_All"
   comment             = "${var.app["domain"]} assets"
   
   origin {
@@ -72,10 +72,11 @@ resource "aws_cloudfront_distribution" "this" {
     bucket          = aws_s3_bucket.this["system"].bucket_domain_name
     prefix          = "${local.project}-cloudfront-logs"
   }
-  
+
   restrictions {
     geo_restriction {
-      restriction_type = "none"
+      restriction_type = "whitelist"
+      locations = ["NZ","AU"]
     }
   }
 
