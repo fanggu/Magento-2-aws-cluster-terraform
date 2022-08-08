@@ -41,7 +41,7 @@ variable "ec2" {
 variable "ec2_instance" {
   description = "ec2 key pair names for ssh connection to instance"
   default = {
-    key_pair_name      = "njkm2dev22"
+    key_pair_name      = "uswest2_njkm2dev"
     market_option_type = "spot"
   }
 }
@@ -49,7 +49,7 @@ variable "ec2_instance" {
 variable "app" {
   description = "Map application params | Magento 2"
   default = {
-    source_repo            = "magenx/Magento-2"
+    source_repo            = "fanggu/Magento-2"
     app_version            = "2"
     cidr_block             = "172.18.0.0/16"
     brand                  = "njkgroup"
@@ -58,7 +58,7 @@ variable "app" {
     admin_login            = "admin"
     admin_firstname        = "NJK"
     admin_lastname         = "Gruop"
-    source                 = "https://github.com/magenx/Magento-2.git"
+    source                 = "https://github.com/fanggu/Magento-2.git"
     language               = "en_NZ"
     currency               = "NZD"
     timezone               = "Pacific/Auckland"
@@ -69,7 +69,7 @@ variable "app" {
     volume_size            = "50"
     composer_user          = "8c681734f22763b50ea0c29dff9e7af2"
     composer_pass          = "02dfee497e669b5db1fe1c8d481d6974"
-    install                = "disabled"
+    install                = ""
   }
 }
 
