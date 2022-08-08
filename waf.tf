@@ -8,8 +8,9 @@
 # # ---------------------------------------------------------------------------------------------------------------------#
 resource "aws_wafv2_web_acl" "this" {
   name        = "${local.project}-WAF-Protections"
-  provider    = aws.useast1
   scope       = "CLOUDFRONT"
+  #To work with CloudFront, you must also specify the region us-east-1 (N. Virginia) on the AWS provider.
+  provider = aws.useast1
   description = "${local.project}-WAF-Protections"
 
   default_action {
